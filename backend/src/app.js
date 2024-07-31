@@ -4,6 +4,7 @@ const config = require('./config');
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');
 const aiService = require('./services/aiService');
+const aiRoutes = require('./routes/ai');
 
 const app = express();
 
@@ -12,6 +13,7 @@ mongoose.connect(config.databaseUrl, { useNewUrlParser: true, useUnifiedTopology
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/ai', aiRoutes);
 
 aiService.startMonitoring();
 
